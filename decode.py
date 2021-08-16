@@ -1,3 +1,5 @@
+import random
+
 def decode(key_path:str,message:str):
      key_file=open(key_path).readlines()
      key_file_contents=[]
@@ -10,5 +12,7 @@ def decode(key_path:str,message:str):
      for code in message:
           if code==":":return_message=return_message+" "
           for item in key_file_contents:
-               if code==item[0]:return_message=return_message+item[1]
+               enc=item[0].split("?")
+               if code in enc:
+                    return_message=return_message+item[1]
      return return_message
