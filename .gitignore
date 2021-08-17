@@ -1,2 +1,7 @@
+# Pycharm Configuration Files
+.idea
 
+# Python Environment
+__pycache__
+venv
 *.pyc
