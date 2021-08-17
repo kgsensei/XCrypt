@@ -1,7 +1,8 @@
 import random
 def generate25():return ''.join(random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ2034567890!@#$%^&*()-=_+{}[];\'\",.<>/") for x in range(random.randint(15,25)))
 def makeKey():
-     generation_base=random.randint(1000,9999);inu=70;generation_seed=[random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9)]
+     generation_base=random.randint(1000,9999);inu=70;generation_seed=[random.randint(1,9),random.randint(1,9),random.randint(1,9),
+     random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9)]
      file_key=["-"*inu+"xcrypt-key"+"-"*inu,
      str(generation_base)+"4kezuihg8i4wz"+generate25()+"?"+generate25()+"?"+generate25()+"?"+generate25()+generate25()+"?"+generate25()+"?"+generate25(),
      "aadgu"+generate25()+"?"+generate25()+"?"+generate25()+"?"+generate25()+"?"+generate25()+"?"+generate25()+"?"+generate25()+"?"+generate25(),
