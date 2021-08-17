@@ -25,34 +25,27 @@ def read_key(key_path: str) -> List[Tuple[str, str]]:
 def encode(key_path: str, message: str) -> str:
     key_file_contents: List[Tuple[str, str]] = read_key(key_path)
     return_message: str = ""
-    if message[0] == " ":
-        message = message[1:]
-    if message[-1] == " ":
-        message = message[:-1]
-    for letter in message:
+
+    for letter in message.strip():
         if letter == " ":
             return_message += ":"
-        for code in key_file_contents:
-            if code[1] == letter:
-                enc = code[0].split("?")
-                return_message += enc[random.randint(0, 7)]
+        for (code_enc, code_letter) in key_file_contents:
+            if code_letter == letter:
+                return_message += code_enc.split("?")[random.randint(0, 7)]
         return_message += "?"
-    if return_message[-1] == "?":
-        return_message = return_message[:-1]
-    return return_message
+
+    return return_message[:-1]
 
 
 def decode(key_path: str, message: str) -> str:
     key_file_contents: List[Tuple[str, str]] = read_key(key_path)
     return_message: str = ""
-    message = message.split("?")
-    for code in message:
+    for code in message.split("?"):
         if code == ":":
             return_message += " "
-        for item in key_file_contents:
-            enc = item[0].split("?")
-            if code in enc:
-                return_message += item[1]
+        for (code_enc, code_letter) in key_file_contents:
+            if code in code_enc.split("?"):
+                return_message += code_letter
     return return_message
 
 
@@ -77,13 +70,12 @@ def make_key() -> str:
         )
     ]
 
-    for character in FUNCTIONAL_CHARACTERS:
-        file_key.append(
-            (
-                    f"{character}{generate4()}{generate25()}?"
-                    + '?'.join(generate25() for _ in range(7))
-            )
-        )
+    file_key.extend(
+        (
+                f"{character}{generate4()}{generate25()}?"
+                + '?'.join(generate25() for _ in range(7))
+        ) for character in FUNCTIONAL_CHARACTERS
+    )
 
     file_key.append("xcrypt-key".center(160))
 
