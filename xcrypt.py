@@ -1,6 +1,11 @@
 import random
 from typing import List, Tuple
 
+GEN_CHARSET: str = (
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ2034567890!@#$%^&*("
+    ")-=_+{}[];\'\",.<>/| "
+)
+
 
 def read_key(key_path: str) -> List[Tuple[str, str]]:
     with open(key_path) as file:
@@ -61,20 +66,12 @@ def decode(key_path: str, message: str) -> str:
 
 def generate25() -> str:
     return ''.join(
-        random.choice(
-            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ2034567890"
-            "!@#$%^&*()-=_+{}[];\'\",.<>/| "
-        ) for x in range(random.randint(15, 25))
+        random.choice(GEN_CHARSET) for _ in range(random.randint(15, 25))
     )
 
 
 def generate4():
-    return ''.join(
-        random.choice(
-            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ2034567890"
-            "!@#$%^&*()-=_+{}[];\'\",.<>/| "
-        ) for x in range(3)
-    )
+    return ''.join(random.choice(GEN_CHARSET) for _ in range(3))
 
 
 def make_key() -> str:
