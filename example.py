@@ -10,7 +10,7 @@ message = input("Message: ")
 print("")
 
 # Build the key and return key file name.
-key = xcrypt.makeKey()
+key = xcrypt.make_key()
 
 # Encrypt data, pass in the key and message-
 # to encrypt. Return the encryted message.
