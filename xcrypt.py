@@ -1,7 +1,9 @@
 import random
 
 def encode(key_path:str,message:str):
-     key_file=open(key_path).readlines()
+     file=open(key_path)
+     key_file=file.readlines()
+     file.close()
      key_file_contents=[]
      key_file.pop(-1)
      key_file.pop(0)
@@ -21,7 +23,9 @@ def encode(key_path:str,message:str):
      return return_message
 
 def decode(key_path:str,message:str):
-     key_file=open(key_path).readlines()
+     file=open(key_path)
+     key_file=file.readlines()
+     file.close()
      key_file_contents=[]
      key_file.pop(-1)
      key_file.pop(0)
