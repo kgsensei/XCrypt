@@ -51,10 +51,6 @@ def makeKey():
      inu=70
      file_key=[]
      functional_characters="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&\'()*+,-./;<=>@[\\]^_`{|}~"
-     generation_seed=[
-          random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9),
-          random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9),random.randint(1,9)
-     ]
      file_key.append("-"*inu+"xcrypt-key"+"-"*inu)
      file_key.append(str(generation_base)+"4kezuihg8i4wz"+generate25()+"?"+generate25()+"?"+generate25()+"?"+generate25()+generate25()+"?"+generate25()+"?"+generate25())
      for character in functional_characters:
