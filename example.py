@@ -5,27 +5,12 @@ import xcrypt
 # Define the message to encrypt and decrypt.
 message = input("Message: ")
 
-# Make newline before printing encrypted-
-# and decrypted data. It looks better.
-print("")
-
 # Build the key and return key file name.
 key = xcrypt.make_key()
 
-# Encrypt data, pass in the key and message-
-# to encrypt. Return the encryted message.
-encrypted = xcrypt.encode(key, message)
+encrypted: str = xcrypt.encode(key, message)
+print("\nEncrypted:", encrypted)
 
-# Decrypt data, pass in key and encrypted-
-# message to decrypt. Return plain text message.
-decrypted = xcrypt.decode(key, encrypted)
 
-# Print encrypted message, str by default
-print("Encrypted: " + encrypted)
-
-# Make newline in between printing encrypted-
-# and decrypted data. It looks better.
-print("")
-
-# Print decrypted message, str by default.
-print("Decrypted: " + decrypted)
+decrypted: str = xcrypt.decode(key, encrypted)
+print("\nDecrypted:", decrypted)
