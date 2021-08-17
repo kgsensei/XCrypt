@@ -14,7 +14,7 @@ def encode(key_path:str,message:str):
           for code in key_file_contents:
                if code[1]==letter:
                     enc=code[0].split("?")
-                    return_message=return_message+enc[random.randint(0,4)]
+                    return_message=return_message+enc[random.randint(0,7)]
           return_message=return_message+"?"
      if return_message[-1]=="?":return_message=return_message[:-1]
      return return_message
