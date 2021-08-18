@@ -75,15 +75,15 @@ def generate4()->str:
     return ''.join(random.choice(FUNCTIONAL_CHARACTERS)for _ in range(4))
 
 def make_key()->str:
-    """
+	"""
 	Build the key and return key file name.
-    :return str
-        The filename of the generated xcrypt key.
-    """
-    generation_base:int=random.randint(1000,9999)
-    file_key:List[str]=["xcrypt-key".center(160),(f"{generation_base}4kezuihg8i4wz"+'?'.join(generate25()for _ in range(7)))]
-    file_key.extend((f"{character}{generate4()}{generate25()}?"+'?'.join(generate25()for _ in range(7)))for character in FUNCTIONAL_CHARACTERS)
-    file_key.append("xcrypt-key".center(160))
-    with open(f"{generation_base}_xcrypt.key", "w+") as f:
+	:return str
+		The filename of the generated xcrypt key.
+	"""
+	generation_base:int=random.randint(1000,9999)
+	file_key:List[str]=["xcrypt-key".center(160),(f"{generation_base}4kezuihg8i4wz"+'?'.join(generate25()for _ in range(7)))]
+	file_key.extend((f"{character}{generate4()}{generate25()}?"+'?'.join(generate25()for _ in range(7)))for character in FUNCTIONAL_CHARACTERS)
+	file_key.append("xcrypt-key".center(160))
+	with open(f"{generation_base}_xcrypt.key","w+")as f:
 		f.write('\n'.join(file_key))
-    return f"{generation_base}_xcrypt.key"
+	return f"{generation_base}_xcrypt.key"
