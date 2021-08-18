@@ -4,6 +4,8 @@
 
 This was initially a project to prove that I could make a strong encryption but I decided to publish it so that the internet peoples could improve it and use it. While it is still kinda basic it will get stronger and more efficient.
 
+Install with `pip install xcrypt`
+
 As of 8.17.21 all the functions are in one file. Please see `example.py` for an example of how to use. Thanks to Sigmanificient for some fixes to the initial code.
 
 ## To use
