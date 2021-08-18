@@ -5,7 +5,7 @@ Code by: kgsensei, revised by: Sigmanificient
 import random
 from typing import List,Tuple
 
-FUNCTIONAL_CHARACTERS:str=("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&\'()*+,-./;<=>@[\\]^_`{|}~")
+FUNCTIONAL_CHARACTERS:str=("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+,-./;<=>@[\\]^_`{|}~")
 
 def read_key(key_path:str)->List[Tuple[str,str]]:
     """
