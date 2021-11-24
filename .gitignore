@@ -7,7 +7,6 @@ venv
 *.pyc
 *.txt
 *.toml
-package/setup.py
 package/src/xcrypt_kgsensei.egg-info/
 package/src/xcrypt.egg-info/
 package/dist/

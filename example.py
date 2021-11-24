@@ -8,9 +8,9 @@ message = input("Message: ")
 key = xcrypt.make_key()
 
 # Encrypt message and display it on screen.
-encrypted = xcrypt.encode(key, message)
+encrypted = xcrypt.encrypt(key, message)
 print("\nEncrypted:", encrypted)
 
 # Decrypt message and display it on screen.
-decrypted = xcrypt.decode(key, encrypted)
+decrypted = xcrypt.decrypt(key, encrypted)
 print("\nDecrypted:", decrypted)

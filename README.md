@@ -2,18 +2,88 @@
 
 ## About
 
-This was initially a project to prove that I could make a strong encryption but I decided to publish it so that the internet peoples could improve it and use it. While it is still kinda basic it will get stronger and more efficient.
+This was initially a project to prove that I could make a strong encryption but I decided to publish it so that the internet people could improve it and use it. While it is still kinda basic it will get stronger and more efficient hopefully.
 
-Install with `pip install xcrypt`
+## To Use
 
-As of 8.17.21 all the functions are in one file. Please see `example.py` for an example of how to use. Thanks to Sigmanificient for some fixes to the initial code.
+To install XCrypt use the following command `pip install xcrypt` or `python -m pip install xcrypt`. After you install it be sure to import it with:
 
-## To use
+```py
+import xcrypt
+```
 
-To use this project all you need to do is download the code and add it to your python project. Import the files and then use. It's really easy, I designed it that way.
+Now you can start to actually use XCrypt. XCrypt is a key file based encryption, so the first step in using it is to obtain a key. You can have someone else give you a key or you can generate one yourself. If you want to generate a key you can use the `xcrypt.make_key()` function. The return value of this function is equal to the key name (as a string). You will need this to encrypt and decrypt information.
 
-## If there are issues
+```py
+import xcrypt
 
-The only library it requires is random and I think that comes with python. Make sure your using the right key file when encrypting and decrypting. I don't know why it shouldn't work if your doing everything right.
+print("Generating key")
 
-#### Copyright (c) 2021 kgsensei.
+keyName = xcrypt.make_key()
+
+print("Key Name is " + keyName)
+
+```
+
+Now that you have a key file generated, the next step is to encrypt some information, the encrypted information must be a string. If it isn't a string it should be automatically converted. If you want to encrypt information the function you would use is `xcrypt.encrypt(keyName, Data)`. This function takes the key name (required for correct encryption) and the data/message to encrypt.
+
+```py
+import xcrypt
+
+keyName = xcrypt.make_key()
+
+encryptedData = xcrypt.encrypt(keyName, "Hello World!")
+
+print(encryptedData) # This should output to a bunch of random characters.
+```
+
+After you have some information encrypted you probably want to decrypt it. The easiest and only way to do that is through the `xcrypt.decrypt(keyName, Data)` function. It takes two variables, keyName (for the key file name, same as the encryption function) and data (the encrypted text seen in variable `encryptedData` previously).
+
+```py
+import xcrpyt
+
+keyName = "<Your Key File Name>"
+
+encryptedData = "<Data Returned From Encrypt Function>"
+
+decryptedData = xcrypt.decrypt(keyName, encryptedData)
+
+print(decryptedData) # If everything worked then this should be "Hello World!".
+```
+
+Alright, now that we know exactly how to do everything lets put it together into one new file and test it. Each line will be commented explaining its purpose.
+
+```py
+import xcrypt # Import xcrypt so we can use the functions.
+
+keyName = xcrypt.make_key() # Generate a key file and save the name to a variable.
+
+initialData = input("Message To Encrypt/Decrypt: ") # Allow a user imputed message.
+
+encryptedData = xcrypt.encrypt(keyName, initialData) # Save encrypted message to variable.
+
+decryptedData = xcrypt.decrypt(keyName, encryptedData) # Save decrypted message to variable.
+
+print("Message: " + initialData) # Display the initial message submitted.
+
+print("Encrypted: " + encryptedData) # Display the encrypted form of the message.
+
+print("Decrypted: " + decryptedData) # Display the decrypted form of the message.
+```
+
+Your finished! You have made a program that uses xcrypt to encrypt and decrypt messages.
+
+A more rough example can be seen in the `example.py` file.
+
+## If There Are Issues
+
+The only library it requires is random and that comes with python.  
+Make sure your using the right key file when encrypting and decrypting.  
+Make sure that your python version is compatable with XCrypt.
+
+If you would like to report and issue please do so by one of the following methods:
+ - Making a GitHub issue.
+ - Joining my Discord server.
+ - Emailing me.
+
+##### Copyright (c) 2021 kgsensei.
