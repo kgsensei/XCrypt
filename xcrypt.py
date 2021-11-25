@@ -11,7 +11,7 @@ FUNCTIONAL_CHARACTERS="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU
 def read_key(key_path):
 	"""
 	Return a pre-parsed of the given key path.
-	:param key_path:str
+	:param key_path [String]
 		Path to the key file.
 	:return List[Tuple[str,str]]
 		Pre-parsed key file.
@@ -26,11 +26,11 @@ def read_key(key_path):
 def encrypt(key_path,message):
 	"""
 	Encrypt data.
-	:param key_path:str
+	:param key_path [String]
 		Path to the key file.
-	:param message:str
+	:param message [String]
 		Data/Message to encrypted.
-	:return str
+	:return str [String]
 		Ciphered message.
 	"""
 	key_file_contents=read_key(key_path)
@@ -49,11 +49,11 @@ def encrypt(key_path,message):
 def decrypt(key_path,message):
 	"""
 	Decrypt data.
-	:param key_path:str
+	:param key_path [String]
 		Path to the key file.
-	:param message:str
+	:param message [String]
 		Encrypted-Data/Message to decrypt.
-	:return str
+	:return str [String]
 		Plain text data/message.
 	"""
 	key_file_contents=read_key(key_path)
@@ -77,7 +77,7 @@ def generate4():
 def make_key():
 	"""
 	Build the key and return key file name.
-	:return str
+	:return str [String]
 		The filename of the generated xcrypt key.
 	"""
 	generation_base=random.randint(1000,9999)
@@ -90,9 +90,9 @@ def make_key():
 def locate_keys(directory):
 	"""
 	Search directory and return key files found.
-	:param directory:str
+	:param directory [String]
 		The directory to search for key files in.
-	:return list
+	:return list [List]
 		A list of key file names located in directory.
 	"""
 	if os.path.exists(directory):
@@ -108,9 +108,9 @@ def locate_keys(directory):
 def clear_keys(directory):
 	"""
 	Search directory and delete key files found.
-	:param directory:str
+	:param directory [String]
 		The directory to search for key files in.
-	:return bool
+	:return bool [Bool]
 		True if it deleted found key files.
 	"""
 	if os.path.exists(directory):
