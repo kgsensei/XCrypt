@@ -73,7 +73,27 @@ print("Decrypted: " + decryptedData) # Display the decrypted form of the message
 
 Your finished! You have made a program that uses xcrypt to encrypt and decrypt messages.
 
-A more rough example can be seen in the `example.py` file.
+A more rough example of this so far be seen in the `example.py` file.
+
+Lets say you want a list of all the generated key files generated in a specific directory till this point. You can run the `xcrypt.locate_keys(directory)` function, the directory variable being the directory that you want to search. It also will search all subdirectories from the specified directory. For example:
+
+```
+ -> A
+   -> B
+     -> C
+       -> D.key
+       -> E.key
+     -> F
+       -> G.key
+       -> H.key
+     -> I.key
+```
+
+If you search the directory C, then the files found would be 'D.key' and 'E.key'. If you search directory B though... 'C/D.key', 'C/E.key', 'F/G.key', 'F/H.key' and 'I.key' would be found. This function will return a list with the relative path of each file. If this doesn't make sense, that's ok. There really isn't a huge reason to use this function.
+
+If there are a lot of key files and you need a fast way to remove them all (and all of the keys in subdirectories, as shown in the `locate_keys()` example) then you can use this helpful function. `xcrypt.clear_keys(directory)` is a great function when it comes to getting rid of keys. Simply pass in the directory (same as `locate_keys()`) and it will delete the key files from that directory (and subdirectory). Since this is pretty straight forward, there won't be an example for this.
+
+*Quick Note: All of the functions should require `xcrypt.` infront of them, this was excluded from the last example paragraph to make it easier to read. Thanks for understanding.*
 
 ## If There Are Issues
 

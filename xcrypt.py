@@ -1,32 +1,37 @@
 """
 A lightweight encryption library in python.
-Code by: kgsensei, revised by: Sigmanificient
+By: kgsensei, with help from: DKellem & Sigmanificient
 """
-import random
 
-FUNCTIONAL_CHARACTERS=("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+,-./;<=>@[\\]^_`{|}~")
+import random
+import os
+
+FUNCTIONAL_CHARACTERS="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+,-./;<=>@[\\]^_`{|}~"
 
 def read_key(key_path):
-    """
+	"""
 	Return a pre-parsed of the given key path.
-    :param key_path:str
-        path to the key
-    :return List[Tuple[str,str]]
-        Pre-parsed key file.
-    """
-    with open(key_path)as file:key_file=file.readlines()[1:-1]
-    key_file_contents=[(line[4:].replace("\n",""),line[0])for line in key_file]
-    return key_file_contents[1::]
+	:param key_path:str
+		Path to the key file.
+	:return List[Tuple[str,str]]
+		Pre-parsed key file.
+	"""
+	if os.path.exists(key_path):
+		with open(key_path)as file:key_file=file.readlines()[1:-1]
+		key_file_contents=[(line[4:].replace("\n",""),line[0])for line in key_file]
+		return key_file_contents[1::]
+	else:
+		raise FileNotFoundError("Key file couldn't be found.")
 
 def encrypt(key_path,message):
 	"""
 	Encrypt data.
 	:param key_path:str
-		path to the key
+		Path to the key file.
 	:param message:str
-		message to encrypted.
+		Data/Message to encrypted.
 	:return str
-		ciphered message.
+		Ciphered message.
 	"""
 	key_file_contents=read_key(key_path)
 	return_message=""
@@ -45,11 +50,11 @@ def decrypt(key_path,message):
 	"""
 	Decrypt data.
 	:param key_path:str
-		path to the key
+		Path to the key file.
 	:param message:str
-		encrypted-message to decrypt.
+		Encrypted-Data/Message to decrypt.
 	:return str
-		plain text message.
+		Plain text data/message.
 	"""
 	key_file_contents=read_key(key_path)
 	return_message:str=""
@@ -62,8 +67,8 @@ def decrypt(key_path,message):
 	return return_message
 
 def generate25():
-    """Generates a sequence up to 25 random characters."""
-    return ''.join(random.choice(FUNCTIONAL_CHARACTERS)for _ in range(random.randint(15,25)))
+	"""Generates a sequence of random characters between 15 and 20 characters."""
+	return ''.join(random.choice(FUNCTIONAL_CHARACTERS)for _ in range(random.randint(15,20)))
 
 def generate4():
 	"""Generates a sequence of 4 random characters."""
@@ -81,3 +86,38 @@ def make_key():
 	file_key.append("xcrypt-key".center(160))
 	with open(f"{generation_base}_xcrypt.key","w+")as f:f.write('\n'.join(file_key))
 	return f"{generation_base}_xcrypt.key"
+
+def locate_keys(directory):
+	"""
+	Search directory and return key files found.
+	:param directory:str
+		The directory to search for key files in.
+	:return list
+		A list of key file names located in directory.
+	"""
+	if os.path.exists(directory):
+		keyFileList=[]
+		for root,dirs,files in os.walk(directory):
+			for file in files:
+				if(file.endswith("_xcrypt.key")):
+					keyFileList.append(os.path.join(root,file))
+		return keyFileList
+	else:
+		raise NotADirectoryError("Directory does not exist.")
+
+def clear_keys(directory):
+	"""
+	Search directory and delete key files found.
+	:param directory:str
+		The directory to search for key files in.
+	:return bool
+		True if it deleted found key files.
+	"""
+	if os.path.exists(directory):
+		for root,dirs,files in os.walk(directory):
+			for file in files:
+				if(file.endswith("_xcrypt.key")):
+					os.remove(os.path.join(root,file))
+		return True
+	else:
+		raise NotADirectoryError("Directory does not exist.")
