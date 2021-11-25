@@ -37,7 +37,7 @@ encryptedData = xcrypt.encrypt(keyName, "Hello World!")
 print(encryptedData) # This should output to a bunch of random characters.
 ```
 
-After you have some information encrypted you probably want to decrypt it. The easiest and only way to do that is through the `xcrypt.decrypt(keyName, Data)` function. It takes two variables, keyName (for the key file name, same as the encryption function) and data (the encrypted text seen in variable `encryptedData` previously).
+After you have some information encrypted you probably want to decrypt it. The only way to do that is through the `xcrypt.decrypt(keyName, Data)` function. It takes two variables, keyName (for the key file name, same as the encryption function) and data (the encrypted text seen in variable `encryptedData` previously).
 
 ```py
 import xcrpyt
