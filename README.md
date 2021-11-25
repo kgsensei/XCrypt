@@ -100,6 +100,9 @@ If there are a lot of key files and you need a fast way to remove them all (and 
 The only library it requires is random and that comes with python.  
 Make sure your using the right key file when encrypting and decrypting.  
 Make sure that your python version is compatable with XCrypt.
+Check that the function names are correct (they updated in 1.2.0).
+Make sure that your key file isn't corrupted.
+Make sure that the key file works with your current version of XCrypt.
 
 If you would like to report and issue please do so by one of the following methods:
  - Making a GitHub issue.

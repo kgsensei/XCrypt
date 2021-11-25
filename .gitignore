@@ -8,6 +8,7 @@ venv
 *.txt
 *.toml
 *.key
+*.log
 package/src/xcrypt_kgsensei.egg-info/
 package/src/xcrypt.egg-info/
 package/dist/

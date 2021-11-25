@@ -1,12 +1,13 @@
 """
-A lightweight encryption library in python.
+A lightweight, easy-to-use encryption library for Python 3.
 By: kgsensei, with help from: DKellem & Sigmanificient
 """
 
 import random
 import os
 
-FUNCTIONAL_CHARACTERS="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+,-./;<=>@[\\]^_`{|}~"
+charList="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+,-./;<=>@[\\]^_`{|}~"
+alwdENMD=7
 
 def read_key(key_path):
 	"""
@@ -42,7 +43,7 @@ def encrypt(key_path,message):
 		for code in key_file_contents:
 			if code[1]==letter:
 				enc=code[0].split("?")
-				return_message+=enc[random.randint(0,7)]
+				return_message+=enc[random.randint(0,alwdENMD)]
 		return_message+="?"
 	return return_message[:-1]
 
@@ -67,13 +68,17 @@ def decrypt(key_path,message):
 	return return_message
 
 def generate25():
-	"""Generates a sequence of random characters between 15 and 20 characters."""
-	return ''.join(random.choice(FUNCTIONAL_CHARACTERS)for _ in range(random.randint(15,20)))
+	"""
+	Generates a sequence of random characters between 15 and 20 characters.
+	"""
+	return ''.join(random.choice(charList)for _ in range(random.randint(15,20)))
 
 def generate4():
-	"""Generates a sequence of 4 random characters."""
-	return ''.join(random.choice(FUNCTIONAL_CHARACTERS)for _ in range(4))
-
+	"""
+	Generates a sequence of 4 random characters.
+	"""
+	return ''.join(random.choice(charList)for _ in range(4))
+	
 def make_key():
 	"""
 	Build the key and return key file name.
@@ -81,9 +86,9 @@ def make_key():
 		The filename of the generated xcrypt key.
 	"""
 	generation_base=random.randint(1000,9999)
-	file_key=["xcrypt-key".center(160),(f"{generation_base}4kezuihg8i4wz"+'?'.join(generate25()for _ in range(7)))]
-	file_key.extend((f"{character}{generate4()}{generate25()}?"+'?'.join(generate25()for _ in range(7)))for character in FUNCTIONAL_CHARACTERS)
-	file_key.append("xcrypt-key".center(160))
+	file_key=["xcrypt-key".center(150),(f"{generation_base}4kezuihg8i4wz"+'?'.join(generate25()for _ in range(alwdENMD)))]
+	file_key.extend((f"{character}{generate4()}{generate25()}?"+'?'.join(generate25()for _ in range(alwdENMD)))for character in charList)
+	file_key.append("xcrypt-key".center(150))
 	with open(f"{generation_base}_xcrypt.key","w+")as f:f.write('\n'.join(file_key))
 	return f"{generation_base}_xcrypt.key"
 
