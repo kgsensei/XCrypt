@@ -6,9 +6,6 @@ __pycache__
 venv
 *.pyc
 *.txt
-*.toml
 *.key
 *.log
-package/src/xcrypt_kgsensei.egg-info/
-package/src/xcrypt.egg-info/
-package/dist/
+dist/
