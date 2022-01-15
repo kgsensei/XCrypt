@@ -109,4 +109,4 @@ If you would like to report and issue please do so by one of the following metho
  - Joining my Discord server.
  - Emailing me.
 
-##### Copyright (c) 2021 kgsensei.
+##### Copyright &copy; kgsensei 2022.

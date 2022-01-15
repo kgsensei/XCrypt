@@ -1,6 +1,9 @@
 """
 A lightweight, easy-to-use encryption library for Python 3.
+
 By: kgsensei, with help from: DKellem & Sigmanificient
+
+Copyright (c) kgsensei 2022
 """
 
 import random
