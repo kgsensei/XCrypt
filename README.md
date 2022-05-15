@@ -106,7 +106,7 @@ Make sure that the key file works with your current version of XCrypt.
 
 If you would like to report and issue please do so by one of the following methods:
  - Making a GitHub issue.
- - Joining my Discord server.
+ - Joining my Discord server [HERE](https://discord.gg/U5A3QWXZKZ).
  - Emailing me.
 
 ##### Copyright &copy; kgsensei 2022.
